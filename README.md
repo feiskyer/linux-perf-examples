@@ -4,7 +4,7 @@
 
 ![introduction](images/intro.jpg)
 
-## 案例列表
+## 部分案例列表
 
 * [应用程序 CPU 使用率过高案例](nginx-high-cpu/README.md)
 * [用户 CPU 使用率过高案例](nginx-short-process/README.md)
