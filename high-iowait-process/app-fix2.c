@@ -1,5 +1,5 @@
 #define _GNU_SOURCE
-#define BUF_SIZE 32*1024*1024
+#define BUF_SIZE 64 * 1024 * 1024
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +11,7 @@
 #include <string.h>
 #include <sys/file.h>
 #include <fcntl.h>
+#include <time.h>
 
 char* select_disk() {
 	DIR* dirptr = opendir("/dev/");
@@ -50,19 +51,21 @@ void sub_process() {
 	unsigned char* buf;
 	posix_memalign((void **)&buf, 512, BUF_SIZE);
 	int read_bytes=0;
-	while(read_bytes<2*BUF_SIZE) {
+	while (read_bytes < 20 * BUF_SIZE)
+	{
 		int ret = read(fd, buf, BUF_SIZE);
-		if (ret<0) {
+		if (ret < 0)
+		{
 			perror("failed to read contents");
 			close(fd);
 			free(disk);
 			free(buf);
 			_exit(1);
 		}
-		printf("Read %d bytes\n", ret);
-		read_bytes +=ret;
+		read_bytes += ret;
 	}
 
+out:
 	close(fd);
 	free(disk);
 	free(buf);
