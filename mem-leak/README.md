@@ -1,20 +1,25 @@
-# README
+# 内存泄漏案例
 
-Example of a memory leaked application.
+**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 xx 篇案例。**
 
-## Build
+案例场景：
+
+* 应用程序存在内存泄漏
+* memleak 工具无法获得应用程序调用栈
+
+## 构建 Docker 镜像
 
 ```sh
 make build
 ```
 
-## Run
+## 运行案例应用
 
 ```sh
 make run
 ```
 
-## Cleanup
+## 停止应用
 
 ```sh
 make clean
