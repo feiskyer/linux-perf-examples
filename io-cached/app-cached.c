@@ -10,10 +10,36 @@
 #include <string.h>
 #include <sys/file.h>
 #include <sys/time.h>
+#include <dirent.h>
+#include <ctype.h>
 
-const char *disk = "/dev/sda1";
+char *select_disk()
+{
+	DIR *dirptr = opendir("/dev/");
+	if (dirptr == NULL)
+	{
+		perror("Failed to open dir");
+		return NULL;
+	}
 
-void app()
+	struct dirent *entry;
+	char *result = (char *)calloc(512, sizeof(char));
+	const char *sd_prefix = "sd";
+	const char *xvd_prefix = "xvd";
+	while (entry = readdir(dirptr))
+	{
+		if (strncmp(sd_prefix, entry->d_name, 2) == 0 || strncmp(xvd_prefix, entry->d_name, 3) == 0)
+		{
+			snprintf(result, 512 * sizeof(char), "/dev/%s", entry->d_name);
+			return result;
+		}
+	}
+
+	free(result);
+	return NULL;
+}
+
+void app(const char* disk)
 {
 	int flags = O_RDONLY | O_LARGEFILE;
 	int fd = open(disk, flags, 0755);
@@ -45,11 +71,40 @@ void app()
 	free(buf);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	int status = 0;
+	int c = 0;
+	char *disk = NULL;
+
+	while ((c = getopt(argc, argv, "d:")) != -1)
+	{
+		switch (c)
+		{
+		case 'd':
+			disk = optarg;
+			break;
+		case '?':
+			printf("Illegal option: -%c\n", isprint(optopt) ? optopt : '#');
+			break;
+		default:
+			_exit(1);
+		}
+	}
+
+	if (disk == NULL)
+	{
+		disk = select_disk();
+	}
+	if (disk == NULL)
+	{
+		_exit(1);
+	}
+
+	printf("Reading data from disk %s\n", disk);
+
 	for (;;) {
-		app();
+		app(disk);
 		sleep(1);
 	}
 
