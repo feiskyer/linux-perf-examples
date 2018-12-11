@@ -12,6 +12,7 @@
 #include <sys/file.h>
 #include <fcntl.h>
 #include <time.h>
+#include <ctype.h>
 
 char* select_disk() {
 	DIR* dirptr = opendir("/dev/");
@@ -35,16 +36,11 @@ char* select_disk() {
 	return NULL;
 }
 
-void sub_process() {
-	char* disk = select_disk();
-	if (disk == NULL) {
-		_exit(1);
-	}
-
+void sub_process(const char *disk)
+{
 	int fd = open(disk, O_RDONLY|O_LARGEFILE, 0755);
 	if (fd<0) {
 		perror("failed to open disk");
-		free(disk);
 		_exit(1);
 	}
 
@@ -58,7 +54,6 @@ void sub_process() {
 		{
 			perror("failed to read contents");
 			close(fd);
-			free(disk);
 			free(buf);
 			_exit(1);
 		}
@@ -67,17 +62,46 @@ void sub_process() {
 
 out:
 	close(fd);
-	free(disk);
 	free(buf);
 	_exit(0);
 }
 
-int main(void) {
+int main(int argc, char **argv)
+{
 	int status = 0;
+	int c = 0;
+	char *disk = NULL;
+
+	while ((c = getopt(argc, argv, "d:")) != -1)
+	{
+		switch (c)
+		{
+		case 'd':
+			disk = optarg;
+			break;
+		case '?':
+			printf("Illegal option: -%c\n", isprint(optopt) ? optopt : '#');
+			_exit(1);
+		default:
+			_exit(1);
+		}
+	}
+
+	if (disk == NULL)
+	{
+		disk = select_disk();
+	}
+	if (disk == NULL)
+	{
+		_exit(1);
+	}
+
+	printf("Reading data from disk %s\n", disk);
+
 	for (;;) {
 		for (int i = 0; i < 2; i++) {
 			if(fork()== 0) {
-				sub_process();
+				sub_process(disk);
 			}
 		}
 
