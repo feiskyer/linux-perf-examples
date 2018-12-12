@@ -17,12 +17,12 @@ push:
 run:
 	docker run --privileged --name=app -itd feisky/app:iowait
 
-.PHONY: fix1
-fix1:
+.PHONY: run-fix1
+run-fix1:
 	docker run --privileged --name=app -itd feisky/app:iowait-fix1
 
-.PHONY: fix2
-fix2:
+.PHONY: run-fix2
+run-fix2:
 	docker run --privileged --name=app -itd feisky/app:iowait-fix2
 
 .PHONY: clean
