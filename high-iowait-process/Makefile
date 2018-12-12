@@ -1,6 +1,3 @@
-# DEVICE ?= /dev/sda
-# BPS_LIMIT ?= 10mb
-
 .PHONY: build
 build:
 	gcc -o app app.c
@@ -19,7 +16,6 @@ push:
 .PHONY: run
 run:
 	docker run --privileged --name=app -itd feisky/app:iowait
-	#docker run --name=app --device $(DEVICE):$(DEVICE) --device-read-bps $(DEVICE):$(BPS_LIMIT) -itd feisky/app:iowait /app -d $(DEVICE)
 
 .PHONY: fix1
 fix1:
