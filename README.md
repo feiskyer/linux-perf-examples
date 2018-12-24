@@ -9,6 +9,8 @@
 * [应用程序 CPU 使用率过高案例](nginx-high-cpu/README.md)
 * [用户 CPU 使用率过高案例](nginx-short-process/README.md)
 * [iowait 使用率过高案例](high-iowait-process/README.md)
+* [未利用系统缓存导致 I/O 缓慢案例](io-cached/README.md)
+* [内存泄漏案例](mem-leak/README.md)
 
 ## 依赖环境
 

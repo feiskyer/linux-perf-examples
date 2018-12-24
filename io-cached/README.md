@@ -1,6 +1,6 @@
 # 直接 I/O 案例
 
-**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 xx 篇案例。**
+**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 17 篇案例。**
 
 案例场景为进程以固定间隔时间读取磁盘导致以下两种现象：
 
