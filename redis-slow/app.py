@@ -51,12 +51,10 @@ def get_cache(type_name):
 @timing
 def get_cache_data(type_name):
     '''handler for /get_cache_data'''
-    keys = set()
-    for key in redis_client.scan_iter("uuid:*"):
-        value = redis_client.get(key)
-        if value == type_name:
-            keys.add(key[5:])
-    return jsonify({"type": type_name, 'count': len(keys), 'data': list(keys)})
+    keys = [key for key in redis_client.scan_iter("uuid:*")]
+    values = redis_client.mget(keys)
+    matched_keys = set([keys[idx][5:] for idx, value in enumerate(values) if value == type_name ])
+    return jsonify({"type": type_name, 'count': len(matched_keys), 'data': list(matched_keys)})
 
 
 @app.route('/init', defaults={'num':5000})
