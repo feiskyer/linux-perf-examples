@@ -21,8 +21,9 @@ void create_process()
 int main(void)
 {
 	signal(SIGCHLD,SIG_IGN); // Avoid zombie process.
+	int i = 0;
 	for (;;) {
-		for (int i = 0; i < 3; i++) {
+		for (i = 0; i < 3; i++) {
 			create_process();
 		}
 		sleep(5);

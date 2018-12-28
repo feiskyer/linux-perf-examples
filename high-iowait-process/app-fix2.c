@@ -157,9 +157,10 @@ int main(int argc, char **argv)
 
 	printf("Reading data from disk %s with buffer size %ld and count %ld\n", disk, buffer_size, buffer_count);
 
+	int i = 0;
 	for (;;)
 	{
-		for (int i = 0; i < 2; i++)
+		for (i = 0; i < 2; i++)
 		{
 			if (fork() == 0)
 			{
