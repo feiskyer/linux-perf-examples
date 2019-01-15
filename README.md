@@ -11,6 +11,10 @@
 * [iowait 使用率过高案例](high-iowait-process/README.md)
 * [未利用系统缓存导致 I/O 缓慢案例](io-cached/README.md)
 * [内存泄漏案例](mem-leak/README.md)
+* [狂打日志案例](logging-app/README.md)
+* [I/O延迟案例](io-latency/README.md)
+* [MySQL 案例](mysql-slow/README.md)
+* [Redis 延迟案例](redis-slow/README.md)
 
 ## 依赖环境
 
