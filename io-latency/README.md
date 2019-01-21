@@ -1,6 +1,6 @@
 # 应用程序I/O延迟案例
 
-**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 xx 篇案例。**
+**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 27 篇案例。**
 
 案例场景：
 
