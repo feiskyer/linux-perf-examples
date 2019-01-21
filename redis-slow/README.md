@@ -1,6 +1,6 @@
 # Redis 延迟严重案例
 
-**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 xx 篇案例。**
+**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 29 篇案例。**
 
 案例场景：
 
