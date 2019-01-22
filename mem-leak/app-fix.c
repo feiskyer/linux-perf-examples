@@ -22,7 +22,7 @@ void *child(void *arg)
 		n0 = n1;
 		n1 = *v;
 		free(v);
-		printf("%dth => %lld\n", n, *v);
+		printf("%dth => %lld\n", n, n1);
 		sleep(1);
 	}
 }
