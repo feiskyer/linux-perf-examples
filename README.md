@@ -8,6 +8,7 @@
 
 * [应用程序 CPU 使用率过高案例](nginx-high-cpu/README.md)
 * [用户 CPU 使用率过高案例](nginx-short-process/README.md)
+* [短时进程案例](short-lived-process/README.md)
 * [iowait 使用率过高案例](high-iowait-process/README.md)
 * [未利用系统缓存导致 I/O 缓慢案例](io-cached/README.md)
 * [内存泄漏案例](mem-leak/README.md)
@@ -15,6 +16,8 @@
 * [I/O延迟案例](io-latency/README.md)
 * [MySQL 案例](mysql-slow/README.md)
 * [Redis 延迟案例](redis-slow/README.md)
+* [DNS 案例](dns/README.md)
+* [网络延迟案例](network-latency/README.md)
 
 ## 依赖环境
 
