@@ -1,6 +1,6 @@
 # 《Linux 性能优化实战》案例
 
-极客时间专栏《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》案例。
+极客时间专栏《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》案例源码。
 
 ![introduction](images/intro.jpg)
 
