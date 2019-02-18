@@ -1,0 +1,29 @@
+#! /usr/bin/env stap
+
+############################################################
+# Dropwatch.stp
+# Author: Neil Horman <nhorman@redhat.com>
+# An example script to mimic the behavior of the dropwatch utility
+# http://fedorahosted.org/dropwatch
+############################################################
+
+# Array to hold the list of drop points we find
+global locations
+
+# Note when we turn the monitor on and off
+probe begin { printf("Monitoring for dropped packets\n") }
+probe end { printf("Stopping dropped packet monitor\n") }
+
+# increment a drop counter for every location we drop at
+probe kernel.trace("kfree_skb") { locations[$location] <<< 1 }
+
+# Every 5 seconds report our drop locations
+probe timer.sec(5)
+{
+  printf("\n")
+  foreach (l in locations-) {
+    printf("%d packets dropped at %s\n",
+           @count(locations[l]), symname(l))
+  }
+  delete locations
+}
