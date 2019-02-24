@@ -18,4 +18,4 @@ push:
 
 .PHONY: clean
 clean:
-	docker rm -f nginx nginx-hostnet
+	docker rm -f nginx nginx-hostnet || echo "Containers already deleted."

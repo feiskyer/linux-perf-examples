@@ -41,4 +41,4 @@ push:
 
 .PHONY: clean
 clean:
-	docker rm -f app mysql dataservice
+	docker rm -f app mysql dataservice || echo "Containers already deleted."

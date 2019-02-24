@@ -15,4 +15,4 @@ push:
 
 .PHONY: clean
 clean:
-	docker rm -f nginx phpfpm
+	docker rm -f nginx phpfpm || echo "Container nginx already deleted."

@@ -18,4 +18,4 @@ push:
 
 .PHONY: clean
 clean:
-	docker rm -f tomcat tomcat-jre11
+	docker rm -f tomcat tomcat-jre11 || echo "Container comcat already deleted."

@@ -28,4 +28,4 @@ run-fix2:
 .PHONY: clean
 clean:
 	rm -f app
-	docker rm -f app
+	docker rm -f app || echo "Container app already deleted."

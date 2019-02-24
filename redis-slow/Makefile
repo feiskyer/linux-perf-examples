@@ -27,4 +27,4 @@ push:
 
 .PHONY: clean
 clean:
-	docker rm -f app redis
+	docker rm -f app redis || echo "Containers already deleted."

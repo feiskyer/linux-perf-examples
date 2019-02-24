@@ -12,4 +12,4 @@ push:
 
 .PHONY: clean
 clean:
-	docker rm -f nginx
+	docker rm -f nginx || echo "Container nginx already deleted."

@@ -15,4 +15,4 @@ push:
 
 .PHONY: clean
 clean:
-	docker rm -f app
+	docker rm -f app || echo "Container app already deleted."
