@@ -1,6 +1,6 @@
 # 网络延迟案例
 
-**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 XX 篇案例。**
+**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 40 篇案例。**
 
 案例场景：
 

@@ -1,6 +1,6 @@
 # 网络地址转换（NAT）案例
 
-**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 XX 篇案例。**
+**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 41、42 篇案例。**
 
 案例场景：
 
