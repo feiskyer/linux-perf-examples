@@ -1,6 +1,6 @@
 # 网络丢包案例
 
-**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 XX 篇案例。**
+**《[Linux 性能优化实战](https://time.geekbang.org/column/intro/140)》第 47、48 篇案例。**
 
 案例场景：
 
