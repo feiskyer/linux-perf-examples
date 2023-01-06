@@ -34,10 +34,29 @@ char *select_disk()
 		if (strncmp(sd_prefix, entry->d_name, 2) == 0 || strncmp(xvd_prefix, entry->d_name, 3) == 0)
 		{
 			snprintf(result, 512 * sizeof(char), "/dev/%s", entry->d_name);
+			closedir(dirptr);
 			return result;
 		}
 	}
 
+	closedir(dirptr);
+
+	dirptr = opendir("/dev/mapper/");
+	if (dirptr == NULL)
+	{
+		perror("Failed to open dir");
+		return NULL;
+	}
+	while (entry = readdir(dirptr))
+	{
+		if (strncmp(".", entry->d_name, 1) != 0)
+		{
+			snprintf(result, 512 * sizeof(char), "/dev/mapper/%s", entry->d_name);
+			closedir(dirptr);
+			return result;
+		}
+	}
+	closedir(dirptr);
 	free(result);
 	return NULL;
 }
